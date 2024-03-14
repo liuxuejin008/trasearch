@@ -7,6 +7,7 @@ import requests
 def handle_request(request):
     url = 'https://www.google.com.hk'
     fact_sheet_chair = request.args.get("q")
+    print("=============================================")
     if fact_sheet_chair is None:
         return response.redirect(url)
     url = "https://api.groq.com/openai/v1/chat/completions"
@@ -15,7 +16,7 @@ def handle_request(request):
         "Content-Type": "application/json"
     }
 
-    lang = request.args.get("lang")
+    lang = request.args.get("language")
     if lang is None:
         lang="英语"
     prompt = f"""
@@ -29,8 +30,6 @@ def handle_request(request):
         "model": "mixtral-8x7b-32768"
     }
     response_1 = requests.post(url, headers=headers, json=data)
-
-
     if response_1.status_code == 200:
         print("Request successful. Response:")
         print(response_1.json())
@@ -46,7 +45,3 @@ def handle_request(request):
         print(response_1.text)
     return response.redirect(url)
 
-
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8088)

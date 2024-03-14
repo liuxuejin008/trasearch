@@ -3,14 +3,18 @@ import re
 from sanic import response, Sanic
 app = Sanic("stock")
 import requests
-@app.route('/')
+@app.route('/search')
 def handle_request(request):
+    url = 'https://www.google.com.hk'
+    fact_sheet_chair = request.args.get("q")
+    if fact_sheet_chair is None:
+        return response.redirect(url)
     url = "https://api.groq.com/openai/v1/chat/completions"
     headers = {
         "Authorization": "Bearer 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",
         "Content-Type": "application/json"
     }
-    fact_sheet_chair = request.args.get("q")
+
     lang = request.args.get("lang")
     prompt = f"""
     你的任务是做语言翻译。
@@ -25,7 +29,7 @@ def handle_request(request):
     }
     response_1 = requests.post(url, headers=headers, json=data)
 
-    url = 'https://www.google.com.hk'
+
     if response_1.status_code == 200:
         print("Request successful. Response:")
         print(response_1.json())

@@ -22,7 +22,7 @@ def handle_request(request):
             lang = "英语"
         prompt = f"""
             你的任务是做语言翻译。
-            根据```标记的语句翻译成为对应{lang}。
+            根据```标记的语句翻译成为对应{lang}，请以jons格式输出。
 
             待翻译的语句: ```{fact_sheet_chair}```
             """

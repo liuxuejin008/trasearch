@@ -16,6 +16,8 @@ def handle_request(request):
     }
 
     lang = request.args.get("lang")
+    if lang is None:
+        lang="英语"
     prompt = f"""
     你的任务是做语言翻译。
     根据```标记的语句翻译成为对应{lang}。

@@ -18,7 +18,6 @@ def handle_request(request):
     lang = request.args.get("lang")
     prompt = f"""
     你的任务是做语言翻译。
-
     根据```标记的语句翻译成为对应{lang}。
 
     待翻译的语句: ```{fact_sheet_chair}```

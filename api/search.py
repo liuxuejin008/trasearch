@@ -39,7 +39,6 @@ def handle_request(request):
         result = re.search(r'is "(.*?)"', message).group(1)
         print(result+"===========")
         url = url+"/search?q="+result
-        print("=========================")
     else:
         print(f"Request failed with status code: {response_1.status_code}")
         print(response_1.text)

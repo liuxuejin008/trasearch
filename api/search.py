@@ -1,5 +1,4 @@
 import json
-import re
 import traceback
 
 from sanic import response, Sanic
@@ -46,11 +45,12 @@ def handle_request(request):
         else:
             print(f"Request failed with status code: {response_1.status_code}")
             print(response_1.text)
-        return response.redirect(search_url)
+
     except Exception as e:
         traceback.print_exc()
     # 发生异常时执行回滚操作
         print(f"An error occurred: {e}")
+    return response.redirect(search_url)
 
 
 #if __name__ == "__main__":

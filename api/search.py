@@ -36,7 +36,9 @@ def handle_request(request):
             print("Request successful. Response:")
             print(response_1.json())
             message = response_1.json()["choices"][0]["message"]["content"]
+            print("=====================")
             print(message)
+            print("=====================")
             json_item = json.loads(message)
             transword = json_item['translation']
             search_url = goole_url + "/search?q=" + transword
